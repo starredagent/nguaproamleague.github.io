@@ -105,6 +105,12 @@
             </nav>
         </header>
 
+        <div class="refresh-button" style="text-align: center; margin-top: 20px;">
+    <button onclick="updateBracketFromStandings()" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+        Refresh Bracket
+    </button>
+</div>
+        
         <div class="bracket-container">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
                 <!-- Background -->
@@ -218,31 +224,41 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            function updateBracketFromStandings() {
-                // Get standings data from localStorage
-                const standings = JSON.parse(localStorage.getItem('collegeStandings') || '[]');
-                
-                // Update each team position in the bracket
-                standings.forEach((team, index) => {
-                    // Get the correct seed number based on array position
-                    const seedNumber = index + 1;
-                    
-                    // Find and update the corresponding text elements in the SVG
-                    const teamElement = document.getElementById(`team${seedNumber}`);
-                    
-                    if (teamElement) {
-                        teamElement.textContent = team.name;
-                    }
+    document.addEventListener('DOMContentLoaded', function() {
+        function updateBracketFromStandings() {
+            const allTeams = [];
+            const divisionTables = document.querySelectorAll('.division table');
+            
+            divisionTables.forEach(table => {
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const team = {
+                        name: row.cells[0].textContent.trim(),
+                        gp: parseInt(row.cells[1].textContent) || 0,
+                        wins: parseInt(row.cells[2].textContent) || 0,
+                        losses: parseInt(row.cells[3].textContent) || 0
+                    };
+                    team.winPct = team.gp > 0 ? team.wins / team.gp : 0;
+                    allTeams.push(team);
                 });
+            });
+            
+            allTeams.sort((a, b) => b.winPct - a.winPct);
+            
+            for (let i = 0; i < 8 && i < allTeams.length; i++) {
+                const teamElement = document.getElementById(`team${i + 1}`);
+                if (teamElement) {
+                    teamElement.textContent = allTeams[i].name;
+                }
             }
+        }
 
-            // Check for standings updates every 5 minutes
-            setInterval(updateBracketFromStandings, 5000);
-
-            // Initial update
-            updateBracketFromStandings();
-        });
-    </script>
+        // Make function globally available for button
+        window.updateBracketFromStandings = updateBracketFromStandings;
+        
+        // Initial update
+        updateBracketFromStandings();
+    });
+</script>
 </body>
 </html>
