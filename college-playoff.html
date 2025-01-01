@@ -220,28 +220,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             function updateBracketFromStandings() {
-                // Get all division tables
-                const divisionTables = document.querySelectorAll('.division table');
-                const standings = [];
-                
-                // Collect teams from each division table
-                divisionTables.forEach(table => {
-                    const rows = table.querySelectorAll('tbody tr');
-                    rows.forEach(row => {
-                        standings.push({
-                            name: row.cells[0].textContent.trim(),
-                            wins: parseInt(row.cells[2].textContent) || 0,
-                            losses: parseInt(row.cells[3].textContent) || 0
-                        });
-                    });
-                });
-                
-                // Sort by win percentage
-                standings.sort((a, b) => {
-                    const aWinPct = a.wins / (a.wins + a.losses) || 0;
-                    const bWinPct = b.wins / (b.wins + b.losses) || 0;
-                    return bWinPct - aWinPct;
-                });
+                // Get standings data from localStorage
+                const standings = JSON.parse(localStorage.getItem('collegeStandings') || '[]');
                 
                 // Update each team position in the bracket
                 standings.forEach((team, index) => {
@@ -258,7 +238,7 @@
             }
 
             // Check for standings updates every 5 minutes
-            setInterval(updateBracketFromStandings, 300000);
+            setInterval(updateBracketFromStandings, 5000);
 
             // Initial update
             updateBracketFromStandings();
