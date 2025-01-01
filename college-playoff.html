@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NGUA Pro-AM League | College Playoff Picture</title>
+    <link rel="icon" href="https://i.imgur.com/2Qkp51X.jpeg" type="image/png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .nav-tabs a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 0 15px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-tabs a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .nav-tabs a.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .bracket-container {
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .bracket-container svg {
+            width: 100%;
+            height: auto;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #e0e0e0;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .nav-tabs a {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>College Playoff Picture | NGUA Pro-AM League</h1>
+            <nav class="nav-tabs">
+                <a href="index.html">High School</a>
+                <a href="college.html">College</a>
+                <a href="pros.html">Pro League</a>
+                <a href="college-playoff.html" class="active">College Playoff Picture</a>
+            </nav>
+        </header>
+
+        <div class="bracket-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
+                <!-- Background -->
+                <rect width="1000" height="600" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="500" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#333">
+                    NGUA College Playoff Bracket
+                </text>
+
+                <!-- First Round - Left Side -->
+                <g id="round1-left">
+                    <!-- Game 1 -->
+                    <rect x="50" y="80" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="seed1" x="130" y="105" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">#1 Seed</text>
+                    <text id="team1" x="130" y="125" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                    
+                    <!-- Game 2 -->
+                    <rect x="50" y="160" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="seed8" x="130" y="185" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">#8 Seed</text>
+                    <text id="team8" x="130" y="205" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                    
+                    <!-- Game 3 -->
+                    <rect x="50" y="280" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="seed4" x="130" y="305" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">#4 Seed</text>
+                    <text id="team4" x="130" y="325" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                    
+                    <!-- Game 4 -->
+                    <rect x="50" y="360" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="seed5" x="130" y="385" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">#5 Seed</text>
+                    <text id="team5" x="130" y="405" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                </g>
+
+                <!-- First Round - Right Side -->
+                <g id="round1-right">
+                    <!-- Game 5 -->
+                    <rect x="790" y="80" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="seed3" x="870" y="105" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">#3 Seed</text>
+                    <text id="team3" x="870" y="125" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                    
+                    <!-- Game 6 -->
+                    <rect x="790" y="160" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="seed6" x="870" y="185" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">#6 Seed</text>
+                    <text id="team6" x="870" y="205" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                    
+                    <!-- Game 7 -->
+                    <rect x="790" y="280" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="seed2" x="870" y="305" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">#2 Seed</text>
+                    <text id="team2" x="870" y="325" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                    
+                    <!-- Game 8 -->
+                    <rect x="790" y="360" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="seed7" x="870" y="385" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">#7 Seed</text>
+                    <text id="team7" x="870" y="405" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                </g>
+
+                <!-- Semifinals - Left Side -->
+                <g id="semis-left">
+                    <rect x="270" y="180" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="semis-left-team" x="350" y="215" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                </g>
+
+                <!-- Semifinals - Right Side -->
+                <g id="semis-right">
+                    <rect x="570" y="180" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="semis-right-team" x="650" y="215" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                </g>
+
+                <!-- Finals -->
+                <g id="finals">
+                    <rect x="420" y="280" width="160" height="60" fill="white" stroke="#333" stroke-width="2"/>
+                    <text id="finals-team" x="500" y="315" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">TBD</text>
+                </g>
+
+                <!-- Champion Box -->
+                <g id="champion">
+                    <rect x="420" y="400" width="160" height="60" fill="#007bff" stroke="#0056b3" stroke-width="2"/>
+                    <text x="500" y="425" text-anchor="middle" font-family="Arial" font-size="12" fill="white">CHAMPION</text>
+                    <text id="champion-team" x="500" y="445" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="white">TBD</text>
+                </g>
+
+                <!-- Connector Lines -->
+                <g id="connectors" stroke="#333" stroke-width="2">
+                    <!-- Left Side Round 1 to Semis -->
+                    <path d="M 210 110 H 240 V 210 H 270" fill="none"/>
+                    <path d="M 210 190 H 240 V 210 H 270" fill="none"/>
+                    
+                    <!-- Right Side Round 1 to Semis -->
+                    <path d="M 790 110 H 760 V 210 H 730" fill="none"/>
+                    <path d="M 790 190 H 760 V 210 H 730" fill="none"/>
+                    
+                    <!-- Semis to Finals -->
+                    <path d="M 430 210 H 400 V 310 H 420" fill="none"/>
+                    <path d="M 570 210 H 600 V 310 H 580" fill="none"/>
+                    
+                    <!-- Finals to Champion -->
+                    <path d="M 500 340 V 400" fill="none"/>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 NGUA Pro-AM League. All rights reserved.</p>
+        <p>
+            Follow us on
+            <a href="https://discord.gg/NGZ5Kk4XWj" style="color: #007bff;">Discord</a>,
+            <a href="https://www.youtube.com/@nguaproamnetwork" style="color: #007bff;">YouTube</a>,
+            <a href="https://twitch.tv/ngualeague" style="color: #007bff;">Twitch</a>.
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateBracketFromStandings() {
+                // Get standings data from localStorage
+                const standings = JSON.parse(localStorage.getItem('collegeStandings') || '[]');
+                
+                // Update each team position in the bracket
+                standings.forEach((team, index) => {
+                    // Get the correct seed number based on array position
+                    const seedNumber = index + 1;
+                    
+                    // Find and update the corresponding text elements in the SVG
+                    const teamElement = document.getElementById(`team${seedNumber}`);
+                    
+                    if (teamElement) {
+                        teamElement.textContent = team.name;
+                    }
+                });
+            }
+
+            // Check for standings updates every 5 minutes
+            setInterval(updateBracketFromStandings, 300000);
+
+            // Initial update
+            updateBracketFromStandings();
+        });
+    </script>
+</body>
+</html>
