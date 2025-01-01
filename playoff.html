@@ -237,8 +237,8 @@
                 });
             }
 
-            // Check for standings updates every 5 seconds
-            setInterval(updateBracketFromStandings, 5000);
+            // Check for standings updates every 5 minutes
+            setInterval(updateBracketFromStandings, 300000);
 
             // Initial update
             updateBracketFromStandings();
