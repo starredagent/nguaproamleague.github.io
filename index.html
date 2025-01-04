@@ -237,13 +237,13 @@
         }
 
         .news-ticker {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    overflow: hidden;
-    position: relative;
-    white-space: nowrap;
-}
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            overflow: hidden;
+            position: relative;
+            white-space: nowrap;
+        }
 
         .full-standings {
             margin-top: 60px;
@@ -268,15 +268,9 @@
         }
 
         .ticker-content {
-    display: inline-block;
-    padding-right: 50px; /* Add space between repetitions */
-    animation: ticker 20s linear infinite;
-}
-
-        .ticker-content:after {
-    content: attr(data-content);
-    padding-right: 50px;
-}
+            display: inline-block;
+            animation: ticker 15s linear infinite;
+        }
 
         th[data-sortable] {
             cursor: pointer;
@@ -314,10 +308,10 @@
         </header>
 
         <div class="news-ticker">
-        <div class="ticker-content" data-content="Season 1 Starts On Tuesday, January 7th!">
-            Season 1 Starts On Tuesday, January 7th!
+            <div class="ticker-content">
+                <span>Season 1 Starts On Tuesday, January 7th!</span>
+            </div>
         </div>
-    </div>
 
         <div class="content">
             <div class="standings">
