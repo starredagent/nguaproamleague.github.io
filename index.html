@@ -1123,42 +1123,8 @@
         header.innerHTML = originalText + (direction === 'asc' ? ' ▲' : ' ▼');
     }
 
-    // High school standings management
-    function updateHighSchoolStandings() {
-        const fullStandingsTable = document.querySelector('.full-standings table');
-        if (!fullStandingsTable) return;
-
-        const teams = Array.from(fullStandingsTable.querySelectorAll('tbody tr'))
-            .map(row => ({
-                name: row.cells[0].textContent,
-                wins: parseInt(row.cells[2].textContent) || 0,
-                losses: parseInt(row.cells[3].textContent) || 0
-            }))
-            .sort((a, b) => {
-                const aWinPct = a.wins / (a.wins + a.losses) || 0;
-                const bWinPct = b.wins / (b.wins + b.losses) || 0;
-                return bWinPct - aWinPct;
-            });
-
-        localStorage.setItem('highSchoolStandings', JSON.stringify(teams));
-    }
-
-    // Initialize both functionalities
+    // Initialize table sorting
     initializeTableSorting();
-    
-    // Set up observer for standings updates
-    const standingsTable = document.querySelector('.full-standings table');
-    if (standingsTable) {
-        const observer = new MutationObserver(updateHighSchoolStandings);
-        observer.observe(standingsTable, {
-            subtree: true,
-            childList: true,
-            characterData: true
-        });
-    }
-
-    // Initial standings update
-    updateHighSchoolStandings();
 });
     </script>
 </body>
