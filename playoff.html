@@ -220,25 +220,60 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             function updateBracketFromStandings() {
-                // Get standings data from localStorage
-                const standings = JSON.parse(localStorage.getItem('highSchoolStandings') || '[]');
-                
-                // Update each team position in the bracket
-                standings.forEach((team, index) => {
-                    // Get the correct seed number based on array position
-                    const seedNumber = index + 1;
-                    
-                    // Find and update the corresponding text elements in the SVG
-                    const teamElement = document.getElementById(`team${seedNumber}`);
-                    
-                    if (teamElement) {
-                        teamElement.textContent = team.name;
-                    }
-                });
-            }
+    // Get standings data from localStorage
+    const standings = JSON.parse(localStorage.getItem('highSchoolStandings') || '[]');
+    
+    // Calculate win percentages and add to team data
+    const teamsWithStats = standings.map(team => ({
+        ...team,
+        winPct: team.wins / (team.wins + team.losses) || 0
+    }));
+    
+    // Sort teams by win percentage to determine seeding
+    const seededTeams = teamsWithStats
+        .sort((a, b) => b.winPct - a.winPct)
+        .map((team, index) => ({
+            ...team,
+            seed: index + 1
+        }));
 
-            // Check for standings updates every 5 minutes
-            setInterval(updateBracketFromStandings, 300000);
+    // Map seeds to bracket positions (1v8, 4v5, 3v6, 2v7)
+    const bracketPositions = [
+        {seed: 1, position: 'team1'},
+        {seed: 8, position: 'team8'},
+        {seed: 4, position: 'team4'},
+        {seed: 5, position: 'team5'},
+        {seed: 3, position: 'team3'},
+        {seed: 6, position: 'team6'},
+        {seed: 2, position: 'team2'},
+        {seed: 7, position: 'team7'}
+    ];
+
+    // Update the bracket with team names
+    bracketPositions.forEach(pos => {
+        const team = seededTeams.find(t => t.seed === pos.seed);
+        const element = document.getElementById(pos.position);
+        if (element && team) {
+            element.textContent = `${team.name} (#${team.seed})`;
+        }
+    });
+
+    // Store the current bracket state
+    localStorage.setItem('currentBracket', JSON.stringify(seededTeams.slice(0, 8)));
+}
+
+// Add event listener for localStorage changes
+window.addEventListener('storage', (e) => {
+    if (e.key === 'highSchoolStandings') {
+        updateBracketFromStandings();
+    }
+});
+
+// Initial update
+document.addEventListener('DOMContentLoaded', updateBracketFromStandings);
+
+// Update every 5 minutes
+setInterval(updateBracketFromStandings, 300000);
 
             // Initial update
             updateBracketFromStandings();
