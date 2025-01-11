@@ -184,6 +184,11 @@
             font-weight: bold;
         }
 
+            .tooltip {
+                position: relative;
+                cursor: pointer;
+            }
+
         @media (max-width: 768px) {
             .content {
                 flex-direction: column;
@@ -203,11 +208,6 @@
                 flex-direction: row;
                 justify-content: center;
                 flex-wrap: wrap;
-            }
-
-            .tooltip {
-                position: relative;
-                cursor: pointer;
             }
 
             .tooltip:hover::after {
